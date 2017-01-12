@@ -1,4 +1,4 @@
-symfony
+gestion de boutique
 =======
 
-A Symfony project created on November 18, 2016, 1:30 pm.
+A Gestion_Boutique project created on November 18, 2016, 1:30 pm.
