@@ -1,0 +1,173 @@
+{% extends "::layoutApplication.html.twig" %}
+
+{% block title %}Articles{% endblock %}
+
+{% block contentPage %}
+
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <h3 style="text-align: center;"><i class="fa fa-align-center"></i> Liste Des Articles </h3>
+                <div class="row">
+                    <div class="row mt">
+                        <div class="col-md-12">
+                            <div class="content-panel">
+                                <table class="table table-striped table-advance table-hover">
+                                    <form role="search" name="searchform" method="get">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-background " data-toggle="modal" data-target="#myModal">
+                                                    <i class="fa fa-plus"></i> Ajouter Article
+                                                </button>
+                                            </div>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                            <h4 class="modal-title" id="myModalLabel">Ajouter un nouveau article</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="post"></form>
+                                                            {{ form_start(ArticleForm, {'attr': {'class': 'form-horizontal'}}) }}
+
+                                                            {# Les erreurs générales du formulaire. #}
+                                                            {{ form_errors(ArticleForm) }}
+
+                                                            <div class="row" style="margin: 15px;padding: 5px">
+                                                                {# Génération du label. #}
+                                                                {{ form_label(ArticleForm.libelle, "Libellé *", {'label_attr': {'class': 'col-sm-4 control-label'}, 'style': 'font-size:16px','maxlength':'30'}) }}
+
+                                                                {# Affichage des erreurs pour ce champ précis. #}
+                                                                {{ form_errors(ArticleForm.libelle) }}
+
+                                                                <div class="col-sm-10">
+                                                                    {# Génération de l'input. #}
+                                                                    {{ form_widget(ArticleForm.libelle, {'attr': {'class': 'form-control'}}) }}
+                                                                </div>
+                                                            </div>
+
+                                                            {# Idem pour un autre champ. #}
+                                                            <div class="row" style="margin: 15px;padding: 5px">
+                                                                {{ form_label(ArticleForm.quantite, "Quantité *", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+                                                                {{ form_errors(ArticleForm.quantite) }}
+                                                                <div class="col-sm-10">
+                                                                    {{ form_widget(ArticleForm.quantite, {'attr': {'class': 'form-control'}, 'style': 'font-size:16px','maxlength':'30'}) }}
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row" style="margin: 15px;padding: 5px">
+                                                                {{ form_label(ArticleForm.prixVenteUnit, "Entrer le prix de vente unitaire *", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+                                                                {{ form_errors(ArticleForm.prixVenteUnit) }}
+                                                                <div class="col-sm-10">
+                                                                    {{ form_widget(ArticleForm.prixVenteUnit, {'attr': {'class': 'form-control'}, 'style': 'font-size:16px','maxlength':'30'}) }}
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row" style="margin: 15px;padding: 5px">
+                                                                {{ form_label(ArticleForm.prixAchatUnit, "Entrer le prix d'achat unitaire *", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+                                                                {{ form_errors(ArticleForm.prixAchatUnit) }}
+                                                                <div class="col-sm-10">
+                                                                    {{ form_widget(ArticleForm.prixAchatUnit, {'attr': {'class': 'form-control'}, 'style': 'font-size:16px','maxlength':'12'}) }}
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row" style="margin: 15px;padding: 5px">
+                                                                {{ form_label(ArticleForm.fournisseur, "Nom et Prenom Fournisseur *", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+                                                                {{ form_errors(ArticleForm.fournisseur) }}
+                                                                <div class="col-sm-10">
+                                                                    {{ form_widget(ArticleForm.fournisseur, {'attr': {'class': 'form-control'}, 'style': 'font-size:16px','maxlength':'30'}) }}
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row" style="margin: 15px;padding: 5px">
+                                                                {{ form_label(ArticleForm.description, "Descritpion *", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+                                                                {{ form_errors(ArticleForm.description) }}
+                                                                <div class="col-sm-10">
+                                                                    {{ form_widget(ArticleForm.description, {'attr': {'class': 'form-control'}, 'style': 'font-size:16px','maxlength':'30'}) }}
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-danger" data-dismiss="modal"> Annuler</button>
+                                                                {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+                                                                {{ form_widget(ArticleForm.soumettre, {'attr': {'class': 'btn btn-background'}}) }}
+                                                            </div>
+                                                            {# Génération automatique des champs pas encore écrits.
+                                                             Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+                                                             et tous les champs cachés (type « hidden »). #}
+                                                            {{ form_rest(ArticleForm) }}
+                                                            {# Fermeture de la balise <form> du formulaire HTML #}
+                                                            {{ form_end(ArticleForm) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <input type="text" placeholder="recherche" name="s" class="form-control left-rounded">
+                                                        <div class="input-group-btn">
+                                                            <button type="submit" class="btn btn-inverse right-rounded">Chercher</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </div>
+                                    </form>
+                                    <hr>
+                                    {% for msg in app.session.flashBag.get('success') %}
+                                      <div class="alert alert-success">
+                                          {{ msg }}
+                                      </div>
+                                        {% endfor %}
+                                    <thead>
+                                    <tr>
+                                        <th style="text-align: center;"><i class="fa"></i>ID</th>
+                                        <th style="text-align: center;"><i class="fa fa-shopping-bag"></i> Libellé</th>
+                                        <th class="hidden-phone" style="text-align: center;"><i class="fa fa-question-circle"></i> Descrition</th>
+                                        <th class="hidden-phone" style="text-align: center;"><i class="fa fa-user"></i> Fournisseur</th>
+                                        <th><i class="fa fa-bookmark " style="text-align: center;"></i> Quantité</th>
+                                        <th><i class=" fa fa-edit" style="text-align: center;"></i> Prix de vente</th>
+                                        <th><i class=" fa fa-edit" style="text-align: center;"></i> Prix d'achat</th>
+                                        <th><i class=" fa fa-edit" style="text-align: center;"></i> Options</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for article in listeArticle %}
+                                    <tr>
+                                        <td style="text-align: center;">{{ article.id }}</td>
+                                        <td style="text-align: center;"><a href="#">{{ article.libelle }}</a></td>
+                                        <td class="hidden-phone" style="text-align: center;width: 40%;">{{ article.description }}</td>
+                                        <td class="hidden-phone" style="text-align: center;">{{ article.fournisseur }}</td>
+                                        {% if  article.quantite < 20 %}
+                                        <td style="text-align: center;"><span class="label label-danger  label-mini" >{{ article.quantite }} </span></td>
+                                            {% else %}
+                                                <td style="text-align: center;"><span class="label label-success label-mini" >{{ article.quantite }} </span></td>
+                                        {% endif %}
+                                        <td style="text-align: center;"><span class="label label-info label-mini" >{{ article.prixVenteUnit }}</span></td>
+                                        <td style="text-align: center;"><span class="label label-info label-mini" >{{ article.prixAchatUnit }}</span></td>
+                                        <td style="text-align: center;">
+                                            <a><button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a>
+                                            <a><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                                            <a><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
+                                        </td>
+                                    </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div><!-- /content-panel -->
+                        </div><!-- /col-md-12 -->
+                    </div><!-- /row -->
+                </div>
+            </section><! --/wrapper -->
+        </section><!-- /MAIN CONTENT -->
+        <!--main content end-->
+{% endblock %}

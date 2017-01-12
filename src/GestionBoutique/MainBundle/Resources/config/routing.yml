@@ -1,0 +1,6 @@
+gestion_boutique_main_homepage:
+    path:     /
+    defaults: { _controller: GestionBoutiqueMainBundle:Acceuil:acceuil }
+login:
+    path:     /login
+    defaults: { _controller: GestionBoutiqueUserBundle:Security:login }

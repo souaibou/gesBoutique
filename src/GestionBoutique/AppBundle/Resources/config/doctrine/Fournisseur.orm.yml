@@ -1,0 +1,30 @@
+GestionBoutique\AppBundle\Entity\Fournisseur:
+    type: entity
+    table: null
+    repositoryClass: GestionBoutique\AppBundle\Repository\FournisseurRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        prenom:
+            type: string
+            length: 255
+        dateInscrit:
+            type: date
+        telephone:
+            type: string
+        adresse:
+            type: string
+            length: 255
+        mail:
+            type: string
+        ville:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

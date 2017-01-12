@@ -1,0 +1,4 @@
+services:
+#    gestion_boutique_main.example:
+#        class: GestionBoutique\MainBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

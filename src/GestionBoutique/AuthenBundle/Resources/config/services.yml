@@ -1,0 +1,4 @@
+services:
+#    gestion_boutique_authen.example:
+#        class: GestionBoutique\AuthenBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

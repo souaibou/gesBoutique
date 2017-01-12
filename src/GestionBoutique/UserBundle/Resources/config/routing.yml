@@ -1,0 +1,15 @@
+login:
+    path:   /login
+    defaults:
+        _controller: GestionBoutiqueUserBundle:Security:login
+
+login_check:
+    path:  /login_check
+    defaults:
+            _controller: GestionBoutiqueUserBundle:Security:loginCheck
+logout:
+    path:  /logout
+
+gestion_boutique_main_homepage:
+    path:     /
+    defaults: { _controller: GestionBoutiqueMainBundle:Acceuil:acceuil }

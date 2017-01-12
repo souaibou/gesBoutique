@@ -1,0 +1,29 @@
+login:
+    path:   /login
+    defaults:
+        _controller: GestionBoutiqueUserBundle:Security:login
+page_application:
+    path:     /application
+    defaults: { _controller: GestionBoutiqueAppBundle:Application:index }
+list_articles:
+    path:     /application/article/listArticles
+    defaults: { _controller: GestionBoutiqueAppBundle:Article:listArticle }
+list_fournisseurs:
+    path:     /application/fournisseur/listFournisseurs
+    defaults: { _controller: GestionBoutiqueAppBundle:Fournisseur:listFournisseur }
+view_fournisseur:
+    path:     /application/fournisseur/viewFournisseur/{id}
+    defaults: { _controller: GestionBoutiqueAppBundle:Fournisseur:viewFournisseur }
+edit_fournisseur:
+    path:     /application/fournisseur/editFournisseur/{id}
+    defaults: { _controller: GestionBoutiqueAppBundle:Fournisseur:editFournisseur }
+trash_fournisseur:
+    path:     /application/fournisseur/trashFournisseur/{id}
+    defaults: { _controller: GestionBoutiqueAppBundle:Fournisseur:trashFournisseur }
+page_profil:
+    path:  /param/profil
+    defaults: { _controller : GestionBoutiqueParamBundle:Profil:profil }
+page_verrouiller:
+    path:  /param/verrouiller
+    defaults: { _controller : GestionBoutiqueParamBundle:Verrouiller:verrouiller }
+
