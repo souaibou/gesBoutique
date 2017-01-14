@@ -7,6 +7,8 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}" rel="stylesheet">
     <!--external css-->
     <link href="{{ asset('assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/zabuto_calendar.css') }}">
@@ -349,6 +351,14 @@
             var to = $("#" + id).data("to");
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
+    </script>
+    <!-- DataTables -->
+    <script src="{{ asset('https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
     </script>
 </body>
 </html>
