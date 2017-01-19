@@ -11,6 +11,9 @@ list_articles:
 list_fournisseurs:
     path:     /application/fournisseur/listFournisseurs
     defaults: { _controller: GestionBoutiqueAppBundle:Fournisseur:listFournisseur }
+list_clients:
+    path:     /application/client/listClients
+    defaults: { _controller: GestionBoutiqueAppBundle:Client:listClient }
 view_fournisseur:
     path:     /application/fournisseur/viewFournisseur/{id}
     defaults: { _controller: GestionBoutiqueAppBundle:Fournisseur:viewFournisseur }

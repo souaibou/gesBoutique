@@ -6,44 +6,69 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Article
+ *
+ * @ORM\Table(name="article")
+ * @ORM\Entity(repositoryClass="GestionBoutique\AppBundle\Repository\ArticleRepository")
  */
 class Article
 {
     /**
      * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="libelle", type="string", length=40)
      */
     private $libelle;
 
     /**
-     * @var int
+     * @var integer
+     *
+     * @ORM\Column(name="quantite", type="integer")
      */
     private $quantite;
 
     /**
      * @var float
+     *
+     * @ORM\Column(name="prixVenteUnit", type="float")
      */
     private $prixVenteUnit;
 
     /**
      * @var float
+     *
+     * @ORM\Column(name="prixAchatUnit", type="float")
      */
     private $prixAchatUnit;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateAchat", type="date")
+     */
+    private $dateAchat;
+
+    /**
      * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Fournisseur", inversedBy="articles")
-     * @ORM\JoinColumn(name="fournisseur_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="GestionBoutique\AppBundle\Entity\Fournisseur")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $fournisseur;
+
 
     /**
      * Get id
@@ -80,37 +105,13 @@ class Article
     }
 
     /**
-     * Set quantite
-     *
-     * @param integer $quantite
-     *
-     * @return Article
-     */
-    public function setQuantite($quantite)
-    {
-        $this->quantite = $quantite;
-
-        return $this;
-    }
-
-    /**
-     * Get quantite
-     *
-     * @return int
-     */
-    public function getQuantite()
-    {
-        return $this->quantite;
-    }
-
-    /**
      * Set prixVenteUnit
      *
      * @param float $prixVenteUnit
      *
      * @return Article
      */
-    public function setPrixVenteUnit($prixVenteUnit)
+    public function setprixVenteUnit($prixVenteUnit)
     {
         $this->prixVenteUnit = $prixVenteUnit;
 
@@ -122,7 +123,7 @@ class Article
      *
      * @return float
      */
-    public function getPrixVenteUnit()
+    public function getprixVenteUnit()
     {
         return $this->prixVenteUnit;
     }
@@ -134,7 +135,7 @@ class Article
      *
      * @return Article
      */
-    public function setPrixAchatUnit($prixAchatUnit)
+    public function setprixAchatUnit($prixAchatUnit)
     {
         $this->prixAchatUnit = $prixAchatUnit;
 
@@ -146,9 +147,33 @@ class Article
      *
      * @return float
      */
-    public function getPrixAchatUnit()
+    public function getprixAchatUnit()
     {
         return $this->prixAchatUnit;
+    }
+
+    /**
+     * Set dateAchat
+     *
+     * @param \DateTime $dateAchat
+     *
+     * @return Article
+     */
+    public function setDateAchat($dateAchat)
+    {
+        $this->dateAchat = $dateAchat;
+
+        return $this;
+    }
+
+    /**
+     * Get dateAchat
+     *
+     * @return \DateTime
+     */
+    public function getDateAchat()
+    {
+        return $this->dateAchat;
     }
 
     /**
@@ -176,13 +201,37 @@ class Article
     }
 
     /**
+     * Set quantite
+     *
+     * @param integer $quantite
+     *
+     * @return Article
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    /**
+     * Get quantite
+     *
+     * @return integer
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+
+    /**
      * Set fournisseur
      *
      * @param \GestionBoutique\AppBundle\Entity\Fournisseur $fournisseur
      *
      * @return Article
      */
-    public function setFournisseur(\GestionBoutique\AppBundle\Entity\Fournisseur $fournisseur = null)
+    public function setFournisseur(\GestionBoutique\AppBundle\Entity\Fournisseur $fournisseur)
     {
         $this->fournisseur = $fournisseur;
 

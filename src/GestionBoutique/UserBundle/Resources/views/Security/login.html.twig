@@ -1,6 +1,7 @@
-{% extends "::layoutApplication.html.twig" %}
+{% extends "::layout.html.twig" %}
 
 {% block title %}Authentification{% endblock %}
+
 {% block body %}
 
     <!-- **********************************************************************************************************************************************************
@@ -22,6 +23,7 @@
         </div>
     </div>
     {% block javascripts %}
+        {{ parent() }}
         <!-- js placed at the end of the document so the pages load faster -->
         <script src="{{ asset('assets/js/jquery.js') }}"></script>
         <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>

@@ -20,9 +20,9 @@ class FournisseurController extends Controller {
         $form = $formBuilder
             ->add('nom'        ,  TextType::class)
             ->add('prenom'     ,  TextType::class)
-            ->add('mail'     ,  EmailType::class)
             ->add('telephone'  ,  TextType::class)
             ->add('adresse'    ,  TextType::class)
+            ->add('mail'     ,  EmailType::class)
             ->add('ville'    ,  TextType::class)
             ->add('soumettre'    ,  SubmitType::class, array('label' => 'Soumettre'))
             ->getForm()
@@ -65,6 +65,11 @@ class FournisseurController extends Controller {
 
     public function trashFournisseurAction($id){
 
+        $em = $this->getDoctrine()->getManager();
+        $em->getRepository('GestionBoutiqueAppBundle:Fournisseur')->dropFournisseurById($id);
+
+        return $this->redirectToRoute('list_fournisseurs');
+
     }
 
     public function editFournisseurAction($id){
@@ -76,7 +81,7 @@ class FournisseurController extends Controller {
 
     public function viewFournisseurAction($id){
 
-        dump($this->getFournisseur($id));die();
+        #dump($this->getFournisseur($id));die();
 
         return $this->render('GestionBoutiqueAppBundle:Fournisseur:viewFournisseur.html.twig', array(
             'fournisseur' => $this->getFournisseur($id),

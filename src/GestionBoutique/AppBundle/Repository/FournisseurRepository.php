@@ -15,4 +15,10 @@ class FournisseurRepository extends \Doctrine\ORM\EntityRepository
         return $this->createQueryBuilder('fournisseur')
             ->orderBy('fournisseur.prenom','ASC');
     }
+    public function dropFournisseurById($id){
+
+        $sql ='DELETE FROM GestionBoutiqueAppBundle:Fournisseur f WHERE f ='.$id.' ';
+        $sqlQuery = $this->getEntityManager()->createQuery($sql);
+        $sqlQuery->execute();
+    }
 }

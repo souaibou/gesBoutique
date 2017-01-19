@@ -7,14 +7,6 @@
         <section id="main-content">
             <section class="wrapper">
                 <h3 style="text-align: center;"><i class="fa fa-align-center"></i> Liste Des Fournisseurs </h3>
-
-                <div class="row">
-                    <!-- Button trigger Add Fournisseur -->
-                    <button type="button" class="btn btn-background " data-toggle="modal" data-target="#addFournisseur" style="margin: 5%;">
-                         <i class="fa fa-plus"></i> Ajouter Fournisseur
-                    </button>
-
-                </div>
                 <!-- Modal -->
                 <div class="modal fade" id="addFournisseur" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -54,14 +46,6 @@
                                 </div>
 
                                 <div class="row" style="margin: 15px;padding: 5px">
-                                    {{ form_label(form.mail, "Entrer Votre Mail *", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
-                                    {{ form_errors(form.mail) }}
-                                    <div class="col-sm-10">
-                                        {{ form_widget(form.mail, {'attr': {'class': 'form-control'}, 'style': 'font-size:16px','maxlength':'30'}) }}
-                                    </div>
-                                </div>
-
-                                <div class="row" style="margin: 15px;padding: 5px">
                                     {{ form_label(form.telephone, "Telephone *", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
                                     {{ form_errors(form.telephone) }}
                                     <div class="col-sm-10">
@@ -76,6 +60,15 @@
                                         {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}, 'style': 'font-size:16px','maxlength':'30'}) }}
                                     </div>
                                 </div>
+
+                                <div class="row" style="margin: 15px;padding: 5px">
+                                    {{ form_label(form.mail, "Entrer Votre Mail *", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+                                    {{ form_errors(form.mail) }}
+                                    <div class="col-sm-10">
+                                        {{ form_widget(form.mail, {'attr': {'class': 'form-control'}, 'style': 'font-size:16px','maxlength':'30'}) }}
+                                    </div>
+                                </div>
+
 
                                 <div class="row" style="margin: 15px;padding: 5px">
                                     {{ form_label(form.ville, "Ville *", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
@@ -100,16 +93,23 @@
                         </div>
                     </div>
                 </div>
+                {% for msg in app.session.flashBag.get('success') %}
+                    <div class="alert alert-success">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
                 <div class="row">
                     <div class="row mt">
                         <div class="col-md-12">
                             <div class="content-panel">
                                 <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                    {% for msg in app.session.flashBag.get('success') %}
-                                        <div class="alert alert-success">
-                                            {{ msg }}
-                                        </div>
-                                    {% endfor %}
+                                    <div>
+                                        <!-- Button trigger Add Fournisseur -->
+                                        <button type="button" class="btn btn-background " data-toggle="modal" data-target="#addFournisseur" style="margin-left: 10px">
+                                            <i class="fa fa-plus"></i> Ajouter Fournisseur
+                                        </button>
+                                    </div>
+                                    <hr>
                                     <thead>
                                     <tr>
                                         <th style="text-align: center;"><i class="fa"></i>ID</th>
@@ -135,7 +135,7 @@
                                                 <td>{{ fournisseur.ville }} </td>
                                                 <td>{{ fournisseur.dateInscrit|date("m/d/Y") }} </td>
                                                 <td>
-                                                    <a href=" {{ path('view_fournisseur', {'id': fournisseur.id} ) }}"><button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a>
+                                                    <a href=" {{ path('view_fournisseur', {'id': fournisseur.id} ) }}"><button class="btn btn-success btn-xs" data-toggle="modal" data-target="#viewFournisseur"><i class="fa fa-check"></i></button></a>
                                                     <a href=" {{ path('edit_fournisseur', {'id': fournisseur.id} ) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                                                     <a href=" {{ path('trash_fournisseur', {'id': fournisseur.id} ) }}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
                                                 </td>

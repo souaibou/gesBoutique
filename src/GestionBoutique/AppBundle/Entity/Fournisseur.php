@@ -2,58 +2,78 @@
 
 namespace GestionBoutique\AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Fournisseur
+ *
+ * @ORM\Table(name="fournisseur")
+ * @ORM\Entity(repositoryClass="GestionBoutique\AppBundle\Repository\FournisseurRepository")
  */
 class Fournisseur
 {
     /**
      * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @Assert\NotBlank()
      * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=25)
      */
     private $nom;
 
     /**
-     * @Assert\NotBlank()
      * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=25)
      */
     private $prenom;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=30)
      */
-    private $mail;
+    private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telephone", type="string", length=15)
+     */
+    private $telephone;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="dateInscrit", type="date")
      */
     private $dateInscrit;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="mail", type="string", length=15)
      */
-    private $telephone;
+    private $mail;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=15)
      */
-    private $adresse;
-
     private $ville;
 
-
-    public function __construct()
-    {
-        $this->dateInscrit = new \Datetime();
+    public function __construct(){
+        $this->dateInscrit = new \DateTime();
     }
+
     /**
      * Get id
      *
@@ -113,31 +133,6 @@ class Fournisseur
     }
 
     /**
-     * Set dateInscrit
-     *
-     * @param \DateTime $dateInscrit
-     *
-     * @return Fournisseur
-     */
-    public function setDateInscrit($dateInscrit)
-    {
-        $this->dateInscrit = $dateInscrit;
-
-        return $this;
-    }
-
-    /**
-     * Get dateInscrit
-     *
-     * @return \DateTime
-     */
-    public function getDateInscrit()
-    {
-        return $this->dateInscrit;
-    }
-
-
-    /**
      * Set adresse
      *
      * @param string $adresse
@@ -162,27 +157,27 @@ class Fournisseur
     }
 
     /**
-     * Set ville
+     * Set telephone
      *
-     * @param string $ville
+     * @param string $telephone
      *
      * @return Fournisseur
      */
-    public function setVille($ville)
+    public function setTelephone($telephone)
     {
-        $this->ville = $ville;
+        $this->telephone = $telephone;
 
         return $this;
     }
 
     /**
-     * Get ville
+     * Get telephone
      *
      * @return string
      */
-    public function getVille()
+    public function getTelephone()
     {
-        return $this->ville;
+        return $this->telephone;
     }
 
     /**
@@ -210,32 +205,50 @@ class Fournisseur
     }
 
     /**
-     * Set telephone
+     * Set ville
      *
-     * @param string $telephone
+     * @param string $ville
      *
      * @return Fournisseur
      */
-    public function setTelephone($telephone)
+    public function setVille($ville)
     {
-        $this->telephone = $telephone;
+        $this->ville = $ville;
 
         return $this;
     }
 
     /**
-     * Get telephone
+     * Get ville
      *
      * @return string
      */
-    public function getTelephone()
+    public function getVille()
     {
-        return $this->telephone;
+        return $this->ville;
     }
 
-    public function __toString()
+    /**
+     * Set dateInscrit
+     *
+     * @param \DateTime $dateInscrit
+     *
+     * @return Fournisseur
+     */
+    public function setDateInscrit($dateInscrit)
     {
-        // TODO: Implement __toString() method.
-        return $this->getPrenom().' '.$this->getNom();
+        $this->dateInscrit = $dateInscrit;
+
+        return $this;
+    }
+
+    /**
+     * Get dateInscrit
+     *
+     * @return \DateTime
+     */
+    public function getDateInscrit()
+    {
+        return $this->dateInscrit;
     }
 }
