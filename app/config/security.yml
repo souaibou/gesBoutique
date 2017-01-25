@@ -14,8 +14,6 @@ security:
             entity:
                 class: GestionBoutiqueUserBundle:User
                 property: username
-        
-        
     firewalls:
         main:
             pattern:  ^/
@@ -26,8 +24,7 @@ security:
                 check_path: login_check
             logout:
                 path:   logout
-                target: /
-
+                target: login
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/client, roles: ROLE_CLIENT }

@@ -18,7 +18,6 @@ class AppKernel extends Kernel
             new GestionBoutique\MainBundle\GestionBoutiqueMainBundle(),
             new GestionBoutique\UserBundle\GestionBoutiqueUserBundle(),
             new GestionBoutique\AppBundle\GestionBoutiqueAppBundle(),
-            new GestionBoutique\AuthenBundle\GestionBoutiqueAuthenBundle(),
             new GestionBoutique\ParamBundle\GestionBoutiqueParamBundle(),
         ];
 

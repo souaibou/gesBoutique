@@ -2,13 +2,9 @@ gestion_boutique_param:
     resource: "@GestionBoutiqueParamBundle/Resources/config/routing.yml"
     prefix:   /
 
-gestion_boutique_authen:
-    resource: "@GestionBoutiqueAuthenBundle/Resources/config/routing.yml"
-    prefix:   /
-
 gestion_boutique_app:
     resource: "@GestionBoutiqueAppBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 gestion_boutique_user:
     resource: "@GestionBoutiqueUserBundle/Resources/config/routing.yml"

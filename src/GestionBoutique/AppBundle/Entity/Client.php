@@ -5,12 +5,12 @@ namespace GestionBoutique\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Fournisseur
+ * Client
  *
- * @ORM\Table(name="fournisseur")
- * @ORM\Entity(repositoryClass="GestionBoutique\AppBundle\Repository\FournisseurRepository")
+ * @ORM\Table(name="client")
+ * @ORM\Entity(repositoryClass="GestionBoutique\AppBundle\Repository\ClientRepository")
  */
-class Fournisseur
+class Client
 {
     /**
      * @var int
@@ -36,9 +36,16 @@ class Fournisseur
     private $prenom;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateInscrit", type="date")
+     */
+    private $dateInscrit;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="adresse", type="string", length=30)
+     * @ORM\Column(name="adresse", type="string", length=25)
      */
     private $adresse;
 
@@ -48,13 +55,6 @@ class Fournisseur
      * @ORM\Column(name="telephone", type="string", length=15)
      */
     private $telephone;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateInscrit", type="date")
-     */
-    private $dateInscrit;
 
     /**
      * @var string
@@ -73,6 +73,7 @@ class Fournisseur
     public function __construct(){
         $this->dateInscrit = new \DateTime();
     }
+    
 
     /**
      * Get id
@@ -89,7 +90,7 @@ class Fournisseur
      *
      * @param string $nom
      *
-     * @return Fournisseur
+     * @return Client
      */
     public function setNom($nom)
     {
@@ -113,7 +114,7 @@ class Fournisseur
      *
      * @param string $prenom
      *
-     * @return Fournisseur
+     * @return Client
      */
     public function setPrenom($prenom)
     {
@@ -133,11 +134,35 @@ class Fournisseur
     }
 
     /**
+     * Set dateInscrit
+     *
+     * @param \DateTime $dateInscrit
+     *
+     * @return Client
+     */
+    public function setDateInscrit($dateInscrit)
+    {
+        $this->dateInscrit = $dateInscrit;
+
+        return $this;
+    }
+
+    /**
+     * Get dateInscrit
+     *
+     * @return \DateTime
+     */
+    public function getDateInscrit()
+    {
+        return $this->dateInscrit;
+    }
+
+    /**
      * Set adresse
      *
      * @param string $adresse
      *
-     * @return Fournisseur
+     * @return Client
      */
     public function setAdresse($adresse)
     {
@@ -161,7 +186,7 @@ class Fournisseur
      *
      * @param string $telephone
      *
-     * @return Fournisseur
+     * @return Client
      */
     public function setTelephone($telephone)
     {
@@ -185,7 +210,7 @@ class Fournisseur
      *
      * @param string $mail
      *
-     * @return Fournisseur
+     * @return Client
      */
     public function setMail($mail)
     {
@@ -209,7 +234,7 @@ class Fournisseur
      *
      * @param string $ville
      *
-     * @return Fournisseur
+     * @return Client
      */
     public function setVille($ville)
     {
@@ -226,34 +251,5 @@ class Fournisseur
     public function getVille()
     {
         return $this->ville;
-    }
-
-    /**
-     * Set dateInscrit
-     *
-     * @param \DateTime $dateInscrit
-     *
-     * @return Fournisseur
-     */
-    public function setDateInscrit($dateInscrit)
-    {
-        $this->dateInscrit = $dateInscrit;
-
-        return $this;
-    }
-
-    /**
-     * Get dateInscrit
-     *
-     * @return \DateTime
-     */
-    public function getDateInscrit()
-    {
-        return $this->dateInscrit;
-    }
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
-        return $this->getPrenom().'-'.$this->getNom();
     }
 }
