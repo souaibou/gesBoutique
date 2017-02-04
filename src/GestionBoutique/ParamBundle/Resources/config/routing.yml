@@ -1,8 +1,8 @@
 page_profil:
-    path:  /param/profil
+    path:  /profil
     defaults: { _controller : GestionBoutiqueParamBundle:Profil:profil }
 page_verrouiller:
-    path:  /param/verrouiller
+    path:  /verrouiller
     defaults: { _controller : GestionBoutiqueParamBundle:Verrouiller:verrouiller }
 page_application:
     path:     /application
