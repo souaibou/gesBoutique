@@ -45,7 +45,7 @@ class Fournisseur
     /**
      * @var string
      *
-     * @ORM\Column(name="telephone", type="string", length=15)
+     * @ORM\Column(name="telephone", type="string", length=20)
      */
     private $telephone;
 
@@ -59,16 +59,17 @@ class Fournisseur
     /**
      * @var string
      *
-     * @ORM\Column(name="mail", type="string", length=15)
+     * @ORM\Column(name="mail", type="string", length=50)
      */
     private $mail;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ville", type="string", length=15)
+     * @ORM\Column(name="ville", type="string", length=50)
      */
     private $ville;
+
 
     public function __construct(){
         $this->dateInscrit = new \DateTime();

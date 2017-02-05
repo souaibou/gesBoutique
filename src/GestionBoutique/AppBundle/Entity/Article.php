@@ -69,6 +69,9 @@ class Article
      */
     private $fournisseur;
 
+    public function __construct(){
+        $this->dateAchat = new \DateTime();
+    }
 
     /**
      * Get id

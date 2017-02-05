@@ -40,7 +40,7 @@ class ClientController extends Controller {
 
             $this->addFlash('success' , 'Client created ');
 
-            return $this->redirectToRoute('list_Clients');
+            return $this->redirectToRoute('list_clients');
         }
 
         $menager = $this->getDoctrine()->getManager();

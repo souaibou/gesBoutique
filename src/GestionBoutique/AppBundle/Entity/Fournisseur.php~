@@ -45,7 +45,7 @@ class Fournisseur
     /**
      * @var string
      *
-     * @ORM\Column(name="telephone", type="string", length=15)
+     * @ORM\Column(name="telephone", type="string", length=20)
      */
     private $telephone;
 
@@ -59,17 +59,20 @@ class Fournisseur
     /**
      * @var string
      *
-     * @ORM\Column(name="mail", type="string", length=15)
+     * @ORM\Column(name="mail", type="string", length=50)
      */
     private $mail;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ville", type="string", length=15)
+     * @ORM\Column(name="ville", type="string", length=50)
      */
     private $ville;
 
+    public function __construct(){
+        $this->dateInscrit = new \DateTime();
+    }
 
     /**
      * Get id
@@ -223,5 +226,34 @@ class Fournisseur
     public function getVille()
     {
         return $this->ville;
+    }
+
+    /**
+     * Set dateInscrit
+     *
+     * @param \DateTime $dateInscrit
+     *
+     * @return Fournisseur
+     */
+    public function setDateInscrit($dateInscrit)
+    {
+        $this->dateInscrit = $dateInscrit;
+
+        return $this;
+    }
+
+    /**
+     * Get dateInscrit
+     *
+     * @return \DateTime
+     */
+    public function getDateInscrit()
+    {
+        return $this->dateInscrit;
+    }
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->getPrenom().'-'.$this->getNom();
     }
 }
