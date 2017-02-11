@@ -29,3 +29,6 @@ page_profil:
 page_verrouiller:
     path:  /param/verrouiller
     defaults: { _controller : GestionBoutiqueParamBundle:Verrouiller:verrouiller }
+list_ventes:
+    path:  /vente/listVentes
+    defaults: { _controller : GestionBoutiqueAppBundle:Vente:vente }
